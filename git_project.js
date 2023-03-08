@@ -1,38 +1,61 @@
 
-const compound = ["Push-ups","Pull-ups","Squats","Sit-up","Chin-ups","Inverted Rows","Slick Floor Bridge Curls","Reverse Lunges", "Ab Halos","V-up Tucks","Reverse Hypers","Jump Squats","Power Pushaways","Cobra Push-Ups"];
+const compound = ["Push-ups","Pull-ups","Squats","Sit-up","Chin-ups","Inverted Rows","Slick Floor Bridge Curls","Reverse Lunges", "Ab Halos","V-up Tucks","Reverse Hypers","Jump Squats","Power Pushaways","Cobra Push-Ups","Flagpoles"];
 const cardio =["Rowing","Sprints","Burpies","Rope Skipping","Crouch Walk","Tire Flips", "Farmer Carries","Ammo Cans", "Boxing"];
 
 const setGen = () => {
-    return Math.floor(Math.random() * (5 -1 +1) + 1);
+    return Math.floor(Math.random() * (5 -1) + 1);
 };
 
 const repGen = () => {
-    return Math.floor(Math.random() * (15 - 5 + 5) + 5);
+    return Math.floor(Math.random() * (15 - 5) + 5);
 };
 
-const timeGen = () => {
+const minGen = () => {
     let minutes = 0;
-    let seconds = 0;
-    let counter =  Math.floor(Math.random() * (600 -300 +300) +300);
+    let counter =  Math.floor(Math.random() * (10 -3) +3);
 
-    while(counter > 60){
-        ++minutes;
-        counter = counter - 60;
-    };
-    seconds = counter;
-
-    return `${minutes} minutes: ${seconds} seconds`
+    return `${minutes} minutes`
 };
 
 const excRestGen = () => {
-     const rest = Math.floor(Math.random() * (3 -1 +1) +1);
-     const exercise = Math.floor(Math.random() * (5-1+1)+1);
-     return `${exercise} exercise: ${rest} rest`
+     const rest = Math.floor(Math.random() * (3 -1) +1);
+     const exercise = Math.floor(Math.random() * (5-1)+1);
+     return `${exercise} exercise/${rest} rest`
 };
 
-const exerciseGen = (arr) => {
+//picks a random exercise from a specified array
+const randomExercise = (arr) => {
+    let randomEX = Math.floor(Math.random() * arr.length)
+    return arr[randomEX];
+};
 
-}
+//functoin to deliver the end product
+const final = () =>{
+    const pick = Math.floor(Math.random() * 2);
+    if(pick === 0){
+        console.log(`Do ${randomExercise(compound)}: ${setGen()} sets of ${repGen()} reps each`);
+    }else{
+        console.log(`Do ${randomExercise(cardio)}: ${minGen()} duration, ${excRestGen()} ratio`);
+    };
+};
+
+final();
+//only works in the browser
+/*let num;
+console.log("Please select an option:")
+console.log("Enter 1 for Compound; 2 for Cardio; 0 to stop.")
+
+do{
+    num = prompt("Please select an option","");
+    if(num === '1'){
+        console.log(`Do ${randomExercise(compound)}: ${setGen()} sets of ${repGen} reps each`)
+    }else if(num === '2'){
+        console.log(`Do ${randomExercise(cardio)}: ${timeGen()} duration, ${excRestGen()}`)
+    }else{
+        console.log("Please choose a valid number.")
+    }
+}while(num !== '0')*/
+
 
 /*console.log('sets');
 console.log(setGen());
@@ -45,4 +68,5 @@ console.log(timeGen());
 console.log('-----------------');
 console.log('exc/rest');
 console.log(excRestGen());
-console.log('-----------------');*/
+console.log('-----------------');
+console.log(randomExercise(compound))*/;
