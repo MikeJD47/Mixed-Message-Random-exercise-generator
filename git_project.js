@@ -3,7 +3,7 @@ const compound = ["Push-ups","Pull-ups","Squats","Sit-up","Chin-ups","Inverted R
 const cardio =["Rowing","Sprints","Burpies","Rope Skipping","Crouch Walk","Tire Flips", "Farmer Carries","Ammo Cans", "Boxing"];
 
 const setGen = () => {
-    return Math.floor(Math.random() * (5 -1) + 1);
+    return Math.floor(Math.random() * (5 -2) + 2);
 };
 
 const repGen = () => {
@@ -11,10 +11,13 @@ const repGen = () => {
 };
 
 const minGen = () => {
-    let minutes = 0;
-    let counter =  Math.floor(Math.random() * (10 -3) +3);
-
+    let minutes =  Math.floor(Math.random() * (10 -3) +3);
     return `${minutes} minutes`
+};
+
+const secGen = () => {
+    let seconds =  Math.floor(Math.random() * (60 -15) +15);
+    return `${seconds} seconds`
 };
 
 const excRestGen = () => {
@@ -35,7 +38,7 @@ const final = () =>{
     if(pick === 0){
         console.log(`Do ${randomExercise(compound)}: ${setGen()} sets of ${repGen()} reps each`);
     }else{
-        console.log(`Do ${randomExercise(cardio)}: ${minGen()} duration, ${excRestGen()} ratio`);
+        console.log(`Do ${randomExercise(cardio)}: ${minGen()} total, exercise duration ${secGen()} ; ${excRestGen()} ratio`);
     };
 };
 
